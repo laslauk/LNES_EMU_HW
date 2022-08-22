@@ -1,16 +1,21 @@
-#include "imemory.hh"
-#include <vector>
+#include "memory.hh"
+#include <iostream>
 
-template<class MemSize, class AddrSize,class DataSize>
-class Memory: public IMemory<uint8_t, uint16_t> {
+    uint8_t Memory::read_byte(uint16_t addr){
+        return 0;
+    }
+    void Memory::write_byte(uint16_t addr, uint8_t data) {
+        
+    }
 
-public:
-    Memory();
-    MemSize read_byte(AddrSize addr);
-    void write_byte(AddrSize addr, DataSize data);
-    
-private:
+    void Memory::init(int size) {
+        std::cout << "gay" << std::endl;
+        _memory.resize(size);
+        std::fill(_memory.begin(), _memory.end(), 0);
+        std::cout << "Memory size:" << _memory.size() << std::endl;
+        
+    }
 
-    std::vector<MemSize> _memory;
-
-};
+    void Memory::init_bus(bus* bus) {
+        
+    }

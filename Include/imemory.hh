@@ -3,17 +3,18 @@
 #define IMEMORY_HH
 class bus;
 
-template<class S, class A>
+template<class MemSize, class AddrSize>
 class IMemory {
 
 public:
 
-    virtual void init_memory() = 0;
-    virtual S read_byte(A addr) = 0;
-    virtual void write_byte(A addr) = 0;
-    virtual void init_bus(bus* bus);
+    virtual void init(int size) = 0;
+    virtual MemSize read_byte(AddrSize addr) = 0;
+    virtual void write_byte(AddrSize addr, MemSize data) = 0;
+    virtual void init_bus(bus* bus) = 0;
 
-private:
+
 
 };
+
 #endif

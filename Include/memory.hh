@@ -3,18 +3,25 @@
 
 #include "imemory.hh"
 #include <vector>
+#include <stdint.h>
 
-template<class MemSize, class AddrSize,class DataSize>
-class Memory: public IMemory<uint8_t, uint16_t> {
+class bus;
+
+
+class Memory: public IMemory<uint8_t, uint16_t>{
 
 public:
-    Memory();
-    MemSize read_byte(AddrSize addr) override;
-    void write_byte(AddrSize addr, DataSize data) override;
-    
-private:
 
-    std::vector<MemSize> _memory;
+
+    uint8_t read_byte(uint16_t addr) override ;
+    void write_byte(uint16_t addr, uint8_t data) override;
+    void init(int size) override;
+    void init_bus(bus* bus) override ;
+
+
+
+private:
+    std::vector<uint8_t> _memory;
 
 };
 
