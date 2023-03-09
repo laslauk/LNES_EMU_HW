@@ -5,18 +5,19 @@
 #include <vector>
 #include <stdint.h>
 
-class bus;
+class IBus;
 
-
-class Memory: public IMemory<uint8_t, uint16_t>{
+class Memory: public IMemory{
 
 public:
 
-
+    ~Memory();
     uint8_t read_byte(uint16_t addr) override ;
     void write_byte(uint16_t addr, uint8_t data) override;
     void init(int size) override;
-    void init_bus(bus* bus) override ;
+    void init_bus(IBus* bus) override;
+     void setMemory(const std::vector<uint8_t>& data) override;
+    uint16_t getMemoryLenghtBytes() override;
 
 
 
